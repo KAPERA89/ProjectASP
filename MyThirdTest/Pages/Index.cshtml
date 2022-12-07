@@ -1,0 +1,54 @@
+﻿@page
+@model MyThirdTest.Pages.Admin.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<form>
+    <p>
+        Product Name : <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+        <button><a asp-page="Index" style="text-decoration:none;color:black">Back to All products </a></button>
+    </p>
+</form>
+
+<hr />
+
+<div class="row row-cols-1  row-cols-md-4  style="display: flex;justify-content:space-evenly;margin-top:20px;">
+    @foreach (var item in Model.Product)
+    {
+        @*<tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    <img src="images/@item.ProductImg" style="width:35px;height:35px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.prix)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ProductID">Edit</a>
+                </td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.ProductID">Details</a>
+                </td>
+                <td>
+                    <a asp-page="./Delete" asp-route-id="@item.ProductID">Delete</a>
+                </td>
+            </tr>*@
+
+
+        <div class="card-deck" style="margin-top:20px">
+            <div class="card" style="width: 18rem;">
+                <img src="~/images/@item.ProductImg" class="card-img-top" />
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.ProductName)</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.prix)</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
